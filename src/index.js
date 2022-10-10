@@ -75,13 +75,14 @@ const getData = async () => {
 
   const inputField = document.getElementById("input-area");
   const inputtedText = inputField.value;
-
-  if (municipalities["names"].indexOf(inputtedText) !== -1) {
-    jsonQuery.query[1].selection.values = [
-      municipalities["codes"][municipalities["names"].indexOf(inputtedText)]
-    ];
+  if (inputtedText !== "") {
+    if (municipalities["names"].indexOf(inputtedText) !== -1) {
+      jsonQuery.query[1].selection.values = [
+        municipalities["codes"][municipalities["names"].indexOf(inputtedText)]
+      ];
+    }
   }
-
+  
   const response = await fetch(URL, {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -133,6 +134,7 @@ const initializeChart = async () => {
 };
 
 getMunicipalities();
+initializeChart()
 
 const searchBtn = document.getElementById("submit-data");
 searchBtn.addEventListener("click", () => {
