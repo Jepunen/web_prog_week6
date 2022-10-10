@@ -1,5 +1,5 @@
 import "./styles.css";
-import frappe from "./Frappe.js";
+import { Chart } from "frappe-charts";
 
 const jsonQuery = {
   query: [
@@ -112,7 +112,7 @@ const initializeChart = async () => {
     ]
   };
 
-  const chart = new frappe.Chart("#chart", {
+  const chart = new Chart("#chart", {
     title: "Finnish parliament",
     data: chartData,
     type: "line",
